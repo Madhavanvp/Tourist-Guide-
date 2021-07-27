@@ -1,0 +1,233 @@
+<html>
+<head>
+<title>TOURIST GUIDE</TITLE>
+<script type="text/javascript">
+  var citiesByState = {
+Madurai: ["Meenakshi Amman Temple","Alagar temple","Aayiram kaal mandapam","pazhamudhir Solai","Thirumalai Nayakar Mahal","Vaigai Dam"],
+Chennai: ["Marina Beach","Valluvar Kottam","Guindy National Park"," Semmozhi Poonga", "MGR Film City","Fort St. George"],
+Coimbatore: ["Aiyogi Shiva","Dhyanalinga Temple","Brookefiels Mall","Marudamalai temple","Velliangiri Hills","Palani"]
+}
+function makeSubmenu(value) {
+if(value.length==0) document.getElementById("citySelect").innerHTML = "<option></option>";
+else {
+var citiesOptions = "";
+for(cityId in citiesByState[value]) {
+citiesOptions+="<option>"+citiesByState[value][cityId]+"</option>";
+}
+document.getElementById("citySelect").innerHTML = citiesOptions;
+}
+}
+function Fun() {
+  var n= document.getElementById("countrySelect");
+    var tex= n.options[n.selectedIndex].text;
+         if(tex=="Madurai")
+         {
+            var img = document.createElement('img');
+            img.src = 'C:\\Users\\hp\\Pictures\\Screenshots\\Madurai.png';
+            document.getElementById('x').appendChild(img);
+          }
+           if(tex=="Chennai")
+         {
+            var img = document.createElement('img');
+            img.src = 'C:\\Users\\hp\\Pictures\\Screenshots\\Chennai.png';
+            document.getElementById('x').appendChild(img);
+          }
+           if(tex=="Coimbatore")
+         {
+            var img = document.createElement('img');
+            img.src = 'C:\\Users\\hp\\Pictures\\Screenshots\\Kovai.png';
+            document.getElementById('x').appendChild(img);
+          }
+            
+        } 
+  function path()
+  {
+    var mad=["Meenakshi Amman Temple","Alagar temple","Aayiram kaal mandapam","pazhamudhir Solai","Thirumalai Nayakar Mahal","Vaigai Dam"];
+    var che=["Marina Beach","Valluvar Kottam","Guindy National Park"," Semmozhi Poonga", "MGR Film City","Fort St. George"];
+    var coi=["Adiyogi Shiva","Dhyanalinga Temple","Brookefiels Mall","Marudamalai temple","Velliangiri Hills","Palani"];
+     let n= document.getElementById("countrySelect");
+    var tex= n.options[n.selectedIndex].text;
+         if(tex=="Madurai")
+         {
+            var img = document.createElement('img');
+            img.src = 'C:\\Users\\hp\\Pictures\\Screenshots\\Madurai.png';
+            document.getElementById('x').appendChild(img);
+          }
+           if(tex=="Chennai")
+         {
+            var img = document.createElement('img');
+            img.src = 'C:\\Users\\hp\\Pictures\\Screenshots\\Chennai.png';
+            document.getElementById('x').appendChild(img);
+          }
+           if(tex=="Coimbatore")
+         {
+            var img = document.createElement('img');
+            img.src = 'C:\\Users\\hp\\Pictures\\Screenshots\\Kovai.png';
+            document.getElementById('x').appendChild(img);
+          }
+            
+    var a= document.getElementById("countrySelect");
+    var text= a.options[a.selectedIndex].text;
+   // document.getElementById("out").innerHTML=text;
+    var b= document.getElementById("citySelect");
+    var text1= b.options[b.selectedIndex].text;
+    //document.getElementById("out1").innerHTML=text1;
+    if(text=="Chennai")
+    {
+    var grap=[[0,0,0,0,34,38],[0,0,46,43,37,0],[0,46,0,0,0,33],[0,43,0,0,23,16],[34,37,0,23,0,25],[38,0,33,16,25,0]]
+    city(che,grap,text1);
+    }
+    else if(text=="Madurai")
+    {
+    var grap=[[0,21,0,19,0,0],[21,0,33,18,32,0],[0,33,0,0,48,36],[19,18,0,0,31,0],[0,32,48,31,0,0],[0,0,36,0,0,0]]
+    city(mad,grap,text1);
+    }
+    else if(text=="Coimbatore")
+    {
+    var grap=[[0,34,0,0,29,0],[34,0,29,0,0,49],[0,29,0,36,27,0],[0,0,36,0,0,31],[29,0,27,0,0,0],[0,49,0,31,0,0]]
+    city(coi,grap,text1);
+    }
+   }
+   function city(city,grap,txt)
+   {
+var inf= 9999,index=0;
+for(let k=0;k<city.length;k++)
+{
+    if(city[k]==txt)
+    {
+        index=k;
+        break;
+    }
+}
+//document.write(index);
+var selected = new Array(6).fill(null);
+var output=new Array(6).fill(1);
+var no_edge = 0,z=0,c=0,d;
+
+selected[index] = -1;
+e=document.getElementById("in")
+var h='';
+  while (no_edge<5) {
+      var id="sp"+(z+1);
+      let min =inf;
+      let x = 0; // row number
+      let y = 0; // col number
+
+      for (var i = 0; i < 6; i++) {
+        if (selected[i] == -1) {
+          for (var j = 0; j < 6; j++) {
+            if (!selected[j] && grap[i][j] != 0) {
+              if (min > grap[i][j]) {
+                min = grap[i][j];
+                x = i;
+                y = j;
+              }
+            }
+          }
+        }
+      }
+      d=city[x]+"->"+city[y]+" "+grap[x][y]+"KM";
+      document.getElementById(id).innerHTML=d;
+      z=z+1;
+      selected[y] =-1;
+      no_edge++;
+    }
+}
+</script>
+   
+    
+<style>
+header{
+ 
+  color: red;
+  background-color:yellow;
+  padding: 5px 10px;
+  font-family: "Times New Roman", Times, serif;
+}
+select{
+	color:red;
+	 border: 5px solid green;
+	 font-family: "Times New Roman", Times, serif;
+  font-size: 20px;
+
+}
+label{
+	color:forestgreen;
+		 font-family: "Times New Roman", Times, serif;
+  font-size: 30px;
+}
+body{
+	background:lavender;
+}
+button{
+	background-color:pink; /* Green */
+  border: none;
+  color: red;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  box-shadow: 0px 0px 15px currentcolor;
+  outline-style: groove;
+  float:center;
+}
+img {
+  border: 5px solid gold;
+   margin-left: auto;
+  margin-right: auto;
+  border-radius: 5px;
+  padding:1px;
+  width: 1000px;
+}
+.sp
+{
+  color: red;
+}
+
+p
+{
+  color:maroon;
+     font-family: "Times New Roman", Times, serif;
+  font-size: 30px;
+}
+</style>
+</head>
+<body>
+<header><h1><center><b>TOURIST GUIDE</header></center></h1></b>
+<br>
+
+<label class="input-group-text" for="i1"><b>Select District</label></b>
+<select id="countrySelect" size="1" onchange="makeSubmenu(this.value)">
+<option value="" disabled selected>Choose....</option>
+<option>Chennai</option>
+<option>Madurai</option>
+<option>Coimbatore</option>
+</select>
+<br>
+    
+    <br><br>
+<label class="input-group-text" for="i2"><b>Current Location</label></b>
+<select id="citySelect" size="1" >
+<option value="" disabled selected>Choose Current place</option>
+<option></option>
+</select>
+<br><br><br>
+<button type="button" value="Find Path" onclick="path()">Find Path</button>
+<p id="out"></p>
+<p id="out1"></p>
+<p id="out2"></p>
+<div id='x' class='cc'></div>
+<div class='dis'>
+  <p>
+    <mark style="background-color:wheat;"> <b style="color:tomato;">Shortest path</b></mark>
+       <br><br>
+        <span id="sp1"></span><br>
+        <span id="sp2"></span><br>
+        <span id="sp3"></span><br>
+        <span id="sp4"></span><br>
+        <span id="sp5"></span><br>
+</p>
+</div>
+</body>
+</html>
