@@ -5,5 +5,7 @@ It is developed using Prim's Algorithm.
 
 To use the code do the Following:
 Change the source location of images.
+
 change the cities and tourist spot according to the need.
+
 Also change the distance.
