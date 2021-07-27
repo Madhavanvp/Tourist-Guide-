@@ -4,6 +4,7 @@ This Project helps to find the shortest path from a source location of tourist s
 It is developed using Prim's Algorithm.
 
 To use the code do the Following:
+
 Change the source location of images.
 
 change the cities and tourist spot according to the need.
